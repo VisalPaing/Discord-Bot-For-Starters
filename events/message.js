@@ -12,22 +12,6 @@ module.exports.run = async (client, message) => {
 
   if (!message.member.hasPermission("ADMINISTRATOR")) {
 
-
-
-    message.content.split(" ").forEach(m => {
-      if (is_url(m)) {
-        message.delete().catch(err => {})
-        return message.channel.send("You are not allowed to send links :/")
-      } else if (badwords.find(x => x.toLowerCase() === m.toLowerCase())) {
-
-        message.delete().catch(err => {})
-        return message.channel.send("You are not allowed to use (**" + m + "**) word here")
-
-      }
-    })
-
-  }
-
   let prefix = db.get(`prefix_${message.guild.id}`);
   if (prefix === null) prefix = default_prefix;
 
